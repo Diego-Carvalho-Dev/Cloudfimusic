@@ -36,7 +36,7 @@ const Card = ({ music }: CardProps) => {
             />
           </div>
           {/* Botão "Saiba Mais" sobreposto à imagem */}
-          <div className="absolute top-0 sm:left-0 left-40 sm:w-[100%] w-[68%] h-full flex items-center justify-center sm:opacity-0 transition-opacity hover:opacity-100">
+          <div className="absolute top-0 sm:left-0 left-40 w-[] h-full flex items-center justify-center sm:opacity-0 transition-opacity hover:opacity-100">
             <button className=" sm:relative sm:right-0 right-36  sm:bottom-0 bottom-2 sm:bg-pink-500 text-white px-2 sm:py-1 pt-7 rounded-lg text-xs">
               Saiba Mais
             </button>
