@@ -26,7 +26,7 @@ export function AuthProvider({ children }: Props) {
     api
       .post("/users", userData)
       .then(() => {
-        Toast({ message: "usuário criado com sucesso", isSucess: true });
+        Toast({ message: "usuário criado com sucesso !", isSucess: true });
         router.push("/login");
       })
       .catch((err) => {

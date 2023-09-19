@@ -62,7 +62,7 @@ export function MusicProvider({ children }: Props) {
       .then((res) => uploadfiles(res.data.id, music!, coverImage!))
       .then((res) => {
         res.status === 200
-          ? Toast({ message: "Música cadastrada com sucesso", isSucess: true })
+          ? Toast({ message: "Música cadastrada com sucesso !", isSucess: true })
           : "Deletar a música do back";
         router.push("/");
       })
