@@ -1,65 +1,60 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './repositories/users.repository';
 
 @Injectable()
 export class UsersService {
-  constructor(private usersRepository: UsersRepository) {}
+  constructor(private userRepository: UsersRepository) {}
+  
   async create(createUserDto: CreateUserDto) {
-    const findUser = await this.usersRepository.findByEmail(
-      createUserDto.email,
-    );
-
+    const findUser = await this.userRepository.findByEmail(createUserDto.email);
+    
     if (findUser) {
       throw new ConflictException('email already exists');
     }
-
-    const user = await this.usersRepository.create(createUserDto);
-    return user;
+    const user = await this.userRepository.create(createUserDto);
+    return this.userRepository.findAll();
   }
 
   async findAll() {
-    return this.usersRepository.findAll();
+    return this.userRepository.findAll();
   }
 
   async findOne(id: string) {
-    const findUser = await this.usersRepository.findOne(id);
+    const findUser = await this.userRepository.findOne(id);
 
     if (!findUser) {
-      throw new NotFoundException('User Not found');
+      throw new NotFoundException('User not found'); 
     }
 
     return findUser;
-  }
-
-  async findByEmail(email: string) {
-    const findUser = await this.usersRepository.findByEmail(email);
-
-    return findUser;
-  }
+	  }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    const findUser = await this.usersRepository.findOne(id);
+    const findUser = await this.userRepository.findOne(id);
 
     if (!findUser) {
-      throw new NotFoundException('User Not found');
+      throw new NotFoundException('User not found');
     }
 
-    return this.usersRepository.update(id, updateUserDto);
+    return this.userRepository.update(id, updateUserDto);
   }
 
   async remove(id: string) {
-    const findUser = await this.usersRepository.findOne(id);
+    const findUser = await this.userRepository.findOne(id);
 
-    if (!findUser) {
-      throw new NotFoundException('User Not found');
+    if (!findUser) { 
+      throw new NotFoundException('User not found');
     }
 
-    return this.usersRepository.delete(id);
+    return this.userRepository.delete(id);
+  }
+
+  async findByEmail(email: string) {
+    const findUser = await this.userRepository.findByEmail(email);
+
+    return findUser;
   }
 }
+  

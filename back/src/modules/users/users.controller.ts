@@ -1,21 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  ParseUUIDPipe,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { JwtauthGuard } from '../auth/jwt-auth.guard';
+import { JwtauthGuard } from '../auth/dtos/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Users')
+@ApiTags("Users")
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -32,12 +22,12 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
-  @UseGuards(JwtauthGuard)
-  @ApiBearerAuth()
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.usersService.findOne(id);
-  }
+    @Get(':id')
+    @UseGuards(JwtauthGuard)
+    @ApiBearerAuth()
+    findOne(@Param('id', ParseUUIDPipe) id: string) {
+      return this.usersService.findOne(id);
+    } 
 
   @Patch(':id')
   @UseGuards(JwtauthGuard)
