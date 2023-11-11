@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [{ "src": "dist/**/*", "use": "@now/node" }],
+    "routes": [{ "src": "/.*", "dest": "dist/main.js" }],
+    "env": {
+      "DATABASE_URL": "@your_database_url",
+      "SECRET_KEY": "@your_secret_key",
+      "CLOUD_NAME": "@your_cloud_name",
+      "API_KEY": "@your_api_key",
+      "API_SECRET": "@your_api_secret"
+    }
+  }
+  
