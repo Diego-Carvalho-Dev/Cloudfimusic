@@ -1,13 +1,23 @@
 {
     "version": 2,
-    "builds": [{ "src": "dist/**/*", "use": "@now/node" }],
-    "routes": [{ "src": "/.*", "dest": "dist/main.js" }],
+    "builds": [
+      {
+        "src": "dist/**/*",
+        "use": "@now/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/.*",
+        "dest": "dist/main.js"
+      }
+    ],
     "env": {
-      "DATABASE_URL": "@your_database_url",
-      "SECRET_KEY": "@your_secret_key",
-      "CLOUD_NAME": "@your_cloud_name",
-      "API_KEY": "@your_api_key",
-      "API_SECRET": "@your_api_secret"
+      "DATABASE_URL": "postgresql://kali:1234@localhost:5432/musicapp?schema=public",
+      "SECRET_KEY": "jigewjgv450f00k232",
+      "CLOUD_NAME": "dznbchsxw",
+      "API_KEY": "265634118847111",
+      "API_SECRET": "5mC_HVZLczv6cytjpUmYtbEnEFc"
     }
   }
   
